@@ -133,7 +133,7 @@ export default function waasConnector(options: InitializeWaasOptions) {
 
     /**
      * This returns a never, because viem's createClient and createWalletClient don't
-     * work with strictNullChecks: false
+     * work with strictNullChecks: false fake change
      */
     async getClient(config) {
       throwIfNoWallet()
@@ -195,7 +195,7 @@ export default function waasConnector(options: InitializeWaasOptions) {
 
         await Logout()
       {
-        throw new Error("CWaaS SDK is not initialized")
+        throw 'logout'
       }
 
         const wallet = await waas.wallets.create()
@@ -215,7 +215,7 @@ export default function waasConnector(options: InitializeWaasOptions) {
 
         await Logout()
         {
-          throw new Error("CWaaS SDK is not initialized")
+          throw 'logout'
         }
 
         const wallet = await waas.wallets.restoreFromBackup(backupData)
