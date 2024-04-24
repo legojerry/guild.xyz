@@ -195,7 +195,7 @@ export default function waasConnector(options: InitializeWaasOptions) {
 
         await Logout()
       {
-        throw 'logout'
+        throw new Error("CWaaS SDK is not initialized")
       }
 
         const wallet = await waas.wallets.create()
@@ -215,7 +215,7 @@ export default function waasConnector(options: InitializeWaasOptions) {
 
         await Logout()
         {
-          throw 'logout'
+        throw new Error("CWaaS SDK is not initialized")
         }
 
         const wallet = await waas.wallets.restoreFromBackup(backupData)
