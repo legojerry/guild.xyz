@@ -193,7 +193,10 @@ export default function waasConnector(options: InitializeWaasOptions) {
         await this.getProvider()
         const { Logout, ProtocolFamily } = await cwaasImport()
 
-        await Logout().catch(() => {})
+        await Logout()
+      {
+        throw new Error("CWaaS SDK is not initialized")
+      }
 
         const wallet = await waas.wallets.create()
         this.currentAddress = await wallet.addresses.for(ProtocolFamily.EVM)
@@ -210,7 +213,10 @@ export default function waasConnector(options: InitializeWaasOptions) {
         await this.getProvider()
         const { Logout, ProtocolFamily } = await cwaasImport()
 
-        await Logout().catch(() => {})
+        await Logout()
+        {
+          throw new Error("CWaaS SDK is not initialized")
+        }
 
         const wallet = await waas.wallets.restoreFromBackup(backupData)
 
