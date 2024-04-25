@@ -64,7 +64,7 @@ import {
 } from "wagmi/chains"
 import { coinbaseWallet, injected, safe, walletConnect } from "wagmi/connectors"
 import { mock } from "wagmiConfig/mockConnector"
-import waasConnector, { WAAS_CONNECTOR_ID } from "wagmiConfig/waasConnector"
+import waasConnector from "wagmiConfig/waasConnector"
 
 /**
  * We should consider adding only those chains here which we actually use for
@@ -219,7 +219,7 @@ export const wagmiConfig = createConfig({
         waasConnector({
           provideAuthToken: async () => {
             const connector = wagmiConfig.connectors.find(
-              (conn) => conn.id === WAAS_CONNECTOR_ID
+              (conn) => conn.id === 'foo'
             ) as Connector
 
             const walletClient = await connector
